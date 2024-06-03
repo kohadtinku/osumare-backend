@@ -14,7 +14,7 @@ app.get('/tasks', (req, res) => {
   res.json(tasks);
 });
 
-// Get a task by ID
+// Get a task by id
 app.get('/tasks/:id', (req, res) => {
   const task = tasks.find(t => t.id === parseInt(req.params.id, 10));
   if (task) {
@@ -41,6 +41,7 @@ app.post('/tasks', (req, res) => {
   res.status(200).json(newTask); // Changed status to 201 for created resource
 });
 
+// update task by id
 app.put('/tasks/:id', (req, res) => {
     const task = tasks.find(t => t.id === parseInt(req.params.id, 10));
     if (!task) {
@@ -57,7 +58,7 @@ app.put('/tasks/:id', (req, res) => {
   });
   
 
-// Delete a task by ID
+// Delete a task by id
 app.delete('/tasks/:id', (req, res) => {
   const taskIndex = tasks.findIndex(t => t.id === parseInt(req.params.id, 10));
   if (taskIndex === -1) {
@@ -66,6 +67,7 @@ app.delete('/tasks/:id', (req, res) => {
   tasks.splice(taskIndex, 1);
   res.status(200).end();
 });
+
 
 // Start the server
 app.listen(port, () => {
